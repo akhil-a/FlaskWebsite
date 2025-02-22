@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Mobile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Add a Mobile</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Mobile Name" required>
+            <input type="text" name="price" placeholder="Price" required>
+            <input type="text" name="company" placeholder="Company" required>
+            <input type="file" name="image" accept="image/*">
+            <button type="submit">Add Mobile</button>
+        </form>
+        <div class="logout-container">
+            <a href="{{ url_for('dashboard') }}" class="btn back">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

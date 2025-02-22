@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Your Purchase History</h1>
+     <div class="user-info">
+            <h2>User: {{ session.username }}</h2>
+            <h2>Server: {{ hostname }}</h2>
+        </div>
+        <div class="history-list">
+            {% for purchase in purchases %}
+            <div class="history-item">
+                <div class="history-header">
+                    <span class="order-id">Order #{{ purchase.id }}</span>
+                    <span class="order-date">{{ purchase.date }}</span>
+                    <span class="order-status {{ purchase.status|lower }}">{{ purchase.status }}</span>
+                </div>
+                <div class="history-details">
+                    <p class="items">{{ purchase.model }}</p>
+                    <div class="amount-section">
+                        <span class="amount-label">Total:</span>
+                        <span class="amount">{{ purchase.amount }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+     <div class="logout-container">
+            <a href="{{ url_for('dashboard') }}" class="btn back">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

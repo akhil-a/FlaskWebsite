@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="products-container">
+        <h1>Mobile Phones</h1>
+        <div class="user-info">
+            <h2>User: {{ session.username }}</h2>
+            <h2>Server: {{ hostname }}</h2>
+        </div>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ url_for('static', filename=product.image.replace('static/', '')) }}" 
+                     alt="{{ product.name }}" class="product-image">
+                <h3>{{ product.name }}</h3>
+                <p>Company: {{ product.company }}</p>
+                <p>Price: {{ product.price }}</p>
+                <form method="POST">
+                    <input type="hidden" name="product_name" value="{{ product.name }}">
+                    <button type="submit" class="btn select">Select</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="logout-container">
+            <a href="{{ url_for('dashboard') }}" class="btn back">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="user-info">
+            <h2>User: {{ session.username }}</h2>
+            <h2>Server: {{ hostname }}</h2>
+        </div>
+        <div class="dashboard-grid">
+            <a href="{{ url_for('product_list') }}" class="dashboard-card">
+                <div class="card-content">
+                    <h3>📱 Products</h3>
+                    <p>Browse our latest mobile collection</p>
+                </div>
+            </a>
+            
+            <a href="{{ url_for('about') }}" class="dashboard-card">
+                <div class="card-content">
+                    <h3>ℹ️ About Us</h3>
+                    <p>Learn about our company</p>
+                </div>
+            </a>
+
+            <a href="{{ url_for('history') }}" class="dashboard-card">
+                <div class="card-content">
+                    <h3>🕒 Purchase History</h3>
+                    <p>View your order history</p>
+                </div>
+            </a>
+           <a href="{{ url_for('add_mobile') }}" class="dashboard-card">
+                <div class="card-content">
+                    <h3>➕ Add Mobile</h3>
+                    <p>Add a new mobile to the product</p>
+                </div>
+            </a>
+            <a href="{{ url_for('view_cart') }}" class="dashboard-card">
+                <div class="card-content">
+                    <h3>🛒 Cart</h3>
+                    <p>View your selected products</p>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="logout-container">
+            <a href="{{ url_for('logout') }}" class="btn logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
